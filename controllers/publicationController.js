@@ -1,3 +1,5 @@
+// controllers/publicationController.js
+
 const asyncHandler = require('express-async-handler');
 const Publication = require('../models/Publication');
 
@@ -7,6 +9,19 @@ const Publication = require('../models/Publication');
 const getPublications = asyncHandler(async (req, res) => {
   const publications = await Publication.find({}).sort({ publicationYear: -1 });
   res.status(200).json(publications);
+});
+
+// @desc    Get a single publication by ID
+// @route   GET /api/publications/:id
+// @access  Public
+const getPublicationById = asyncHandler(async (req, res) => {
+  console.log(`API received request for publication ID: ${req.params.id}`);
+  const publication = await Publication.findById(req.params.id);
+  if (publication) {
+    res.json(publication);
+  } else {
+    res.status(404).json({ message: 'Publication not found in DB' });
+  }
 });
 
 // @desc    Create a publication
@@ -48,4 +63,11 @@ const deletePublication = asyncHandler(async (req, res) => {
     res.status(200).json({ id: req.params.id, message: 'Publication removed' });
 });
 
-module.exports = { getPublications, createPublication, updatePublication, deletePublication };
+// This exports all the functions defined above
+module.exports = { 
+  getPublications, 
+  getPublicationById,
+  createPublication, 
+  updatePublication, 
+  deletePublication,
+};

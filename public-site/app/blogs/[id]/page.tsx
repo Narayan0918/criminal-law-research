@@ -6,7 +6,7 @@ interface Blog {
   title: string;
   author: string;
   createdAt: string;
-  content: string; // This will contain the HTML from the rich-text editor
+  content: string;
 }
 
 async function getBlogById(id: string) {
@@ -14,12 +14,14 @@ async function getBlogById(id: string) {
     const res = await axios.get(`http://localhost:5001/api/blogs/${id}`);
     return res.data;
   } catch (error) {
-    return null; // Handle cases where the blog is not found
+    return null;
   }
 }
 
 export default async function BlogPostPage({ params }: { params: { id: string } }) {
-  const blog: Blog = await getBlogById(params.id);
+  // The fix is to await params before using the id
+  const { id } = await params;
+  const blog: Blog = await getBlogById(id);
 
   if (!blog) {
     return <div className="text-center p-8">Blog post not found.</div>;
@@ -31,7 +33,6 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
       <div className="text-gray-500 mb-6">
         <span>By {blog.author}</span> | <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
       </div>
-      {/* This renders the HTML content from your TipTap editor */}
       <div
         className="prose lg:prose-xl max-w-none"
         dangerouslySetInnerHTML={{ __html: blog.content }}
