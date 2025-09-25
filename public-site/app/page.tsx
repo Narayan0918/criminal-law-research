@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import Link from "next/link";
+import "./globals.css"
 
 // Define types for our data
 interface Blog {
