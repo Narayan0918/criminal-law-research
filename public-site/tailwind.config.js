@@ -1,7 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import defaultTheme from 'tailwindcss/defaultTheme'; // 1. Import the default theme
-
-const config = {
+module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,13 +7,11 @@ const config = {
   ],
   theme: {
     extend: {
-      // 2. Spread the default fonts and colors back in
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', 'sans-serif'],
         serif: ['Lora', 'serif'],
       },
       colors: {
-        ...defaultTheme.colors, // Add the default color palette
         'primary': '#2D3748',
         'accent': '#2B6CB0',
         'background': '#F7FAFC',
@@ -25,6 +21,4 @@ const config = {
   plugins: [
     require('@tailwindcss/typography')
   ],
-};
-
-export default config;
+}
