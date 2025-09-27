@@ -14,7 +14,11 @@ module.exports = {
       colors: {
         'primary': '#2D3748',
         'accent': '#2B6CB0',
-        'background': '#F7FAFC',
+        'navBackground':'#fff2e9',
+        'logocolor1':'#f16a09',
+        'logocolor2':'#ff5683',
+        'footBackground':'#fff2e9',
+        'background': '#FAF8F1',
       },
     },
   },

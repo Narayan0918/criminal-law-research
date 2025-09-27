@@ -87,7 +87,7 @@ export default async function HomePage() {
           </h2>
           <div className="space-y-4">
             {upcomingEvents.map((event: Event) => (
-              <div key={event._id}>
+              <div key={event._id} className="p-4 bg-white rounded-lg shadow-sm">
                 <p className="font-bold">{event.title}</p>
                 <p className="text-sm text-gray-600">
                   {new Date(event.eventDate).toLocaleDateString()}
@@ -104,7 +104,7 @@ export default async function HomePage() {
           </h2>
           <div className="space-y-4">
             {latestPublications.map((pub: Publication) => (
-              <div key={pub._id}>
+              <div key={pub._id} className="p-4 bg-white rounded-lg shadow-sm">
                 <p className="font-bold hover:underline">
                   <Link href={`/publications/${pub._id}`}>{pub.title}</Link>
                 </p>
