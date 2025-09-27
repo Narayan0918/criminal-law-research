@@ -1,15 +1,25 @@
-// client/app/dashboard/page.tsx (Updated)
-
 "use client";
 
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function DashboardPage() {
   const router = useRouter();
+  // --- START: Added state to check for role ---
+  const [isAdminManager, setIsAdminManager] = useState(false);
+
+  useEffect(() => {
+    const role = localStorage.getItem('admin_role');
+    if (role === 'super-admin') {
+      setIsAdminManager(true);
+    }
+  }, []);
+  // --- END: Added state to check for role ---
 
   const handleLogout = () => {
     localStorage.removeItem('admin_token');
+    localStorage.removeItem('admin_role'); // Clear role on logout
     router.push('/');
   };
 
@@ -26,10 +36,16 @@ export default function DashboardPage() {
           <Link href="/dashboard/publications" className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-6 rounded">
             Manage Publications
           </Link>
-          {/* Add the new link for Events */}
           <Link href="/dashboard/events" className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-6 rounded">
             Manage Events
           </Link>
+          {/* --- START: Conditional Link for Admin Management --- */}
+          {isAdminManager && (
+            <Link href="/dashboard/admins" className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded">
+              Manage Admins
+            </Link>
+          )}
+          {/* --- END: Conditional Link for Admin Management --- */}
         </div>
 
         <button
