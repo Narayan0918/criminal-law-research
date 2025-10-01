@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className={`${inter.className} font-sans bg-background text-primary`}>
+      <body className={`${inter.className} font-sans bg-background2 text-primary`}>
         <header className="bg-navBackground shadow-md">
           <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
             <Link href="/" className="text-xl font-bold text-primary">
@@ -24,10 +24,10 @@ export default function RootLayout({
               <span className="text-xl font-bold text-logocolor2">R</span>
             </Link>
             <div className="space-x-4">
-              <Link href="/" className="hover:text-accent">Home</Link>
-              <Link href="/blogs" className="hover:text-accent">Blog</Link>
-              <Link href="/publications" className="hover:text-accent">Publications</Link>
-              <Link href="/events" className="hover:text-accent">Events</Link>
+              <Link href="/" className="hover:text-logocolor2 font-bold">Home</Link>
+              <Link href="/blogs" className="hover:text-logocolor2 font-bold">Blog</Link>
+              <Link href="/publications" className="hover:text-logocolor2 font-bold">Publications</Link>
+              <Link href="/events" className="hover:text-logocolor2 font-bold">Events</Link>
             </div>
           </nav>
         </header>
