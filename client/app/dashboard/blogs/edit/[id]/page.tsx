@@ -68,7 +68,7 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
   if (loading) return <p className="text-center p-8">Loading post...</p>;
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="container mx-auto p-8 min-h-screen">
       <h1 className="text-3xl text-black font-bold mb-6">Edit Blog Post</h1>
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
         <div className="mb-4">
