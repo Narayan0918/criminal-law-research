@@ -66,7 +66,7 @@ export default function EditPublicationPage({ params }: { params: { id: string }
 
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-6">Edit Publication</h1>
+      <h1 className="text-3xl text-black font-bold mb-6">Edit Publication</h1>
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
         
         <div className="mb-4">
@@ -76,7 +76,7 @@ export default function EditPublicationPage({ params }: { params: { id: string }
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
           />
         </div>
 
@@ -87,7 +87,7 @@ export default function EditPublicationPage({ params }: { params: { id: string }
             id="authors"
             value={authors}
             onChange={(e) => setAuthors(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         
@@ -98,7 +98,7 @@ export default function EditPublicationPage({ params }: { params: { id: string }
             id="publicationYear"
             value={publicationYear}
             onChange={(e) => setPublicationYear(parseInt(e.target.value) || '')}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
           />
         </div>
 
@@ -109,7 +109,7 @@ export default function EditPublicationPage({ params }: { params: { id: string }
             id="link"
             value={link}
             onChange={(e) => setLink(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         
@@ -120,7 +120,7 @@ export default function EditPublicationPage({ params }: { params: { id: string }
             value={abstract}
             onChange={(e) => setAbstract(e.target.value)}
             rows={6}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         

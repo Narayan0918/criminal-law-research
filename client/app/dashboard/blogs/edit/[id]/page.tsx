@@ -65,7 +65,7 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
 
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-6">Edit Blog Post</h1>
+      <h1 className="text-3xl text-black font-bold mb-6">Edit Blog Post</h1>
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
         <div className="mb-4">
           <label htmlFor="title" className="block text-gray-700 font-bold mb-2">Title</label>

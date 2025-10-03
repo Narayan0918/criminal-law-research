@@ -62,8 +62,8 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
   if (loading) return <p className="text-center p-8">Loading event...</p>;
 
   return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-6">Edit Event</h1>
+    <div className="container mx-auto p-8 ">
+      <h1 className="text-3xl text-black font-bold mb-6">Edit Event</h1>
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
         
         <div className="mb-4">
@@ -73,7 +73,7 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
           />
         </div>
 
@@ -84,7 +84,7 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
             id="eventDate"
             value={eventDate}
             onChange={(e) => setEventDate(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         
@@ -95,7 +95,7 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
             id="location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         
@@ -106,7 +106,7 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows={6}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         

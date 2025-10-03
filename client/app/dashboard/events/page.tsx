@@ -53,9 +53,9 @@ export default function ManageEventsPage() {
   if (error) return <p className="text-center mt-8 text-red-500">{error}</p>;
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="container mx-auto p-8 h-screen">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Manage Events</h1>
+        <h1 className="text-3xl text-black font-bold">Manage Events</h1>
         <Link href="/dashboard/events/new" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           + Add New Event
         </Link>

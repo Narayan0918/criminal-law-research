@@ -39,11 +39,11 @@ export default function LoginPage({ params }: { params: Promise<{ id: string }> 
           {/* ... (form fields remain the same) ... */}
           <div>
             <label htmlFor="username" className="text-sm font-medium text-gray-700">Username</label>
-            <input id="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"/>
+            <input id="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black"/>
           </div>
           <div>
             <label htmlFor="password" className="text-sm font-medium text-gray-700">Password</label>
-            <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"/>
+            <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black"/>
           </div>
           {error && <p className="text-sm text-center text-red-600">{error}</p>}
           <div>

@@ -18,7 +18,7 @@ const RichTextEditor = ({ value, onChange }: RichTextEditorProps) => {
     immediatelyRender: false, 
     editorProps: {
       attributes: {
-        class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none p-4 border border-gray-300 rounded-md min-h-[200px]',
+        class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none p-4 text-black border border-gray-400 rounded-md min-h-[200px]',
       },
     },
     onUpdate: ({ editor }) => {
