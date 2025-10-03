@@ -21,7 +21,8 @@ interface Event {
 // Helper functions to fetch data from our API
 async function getLatestBlogs() {
   try {
-    const res = await axios.get("http://localhost:5001/api/blogs");
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/blogs`);
     return res.data.slice(0, 3);
   } catch (error) {
     return [];
@@ -30,7 +31,8 @@ async function getLatestBlogs() {
 
 async function getLatestPublications() {
   try {
-    const res = await axios.get("http://localhost:5001/api/publications");
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/publications`);
     return res.data.slice(0, 3);
   } catch (error) {
     return [];
@@ -39,7 +41,8 @@ async function getLatestPublications() {
 
 async function getUpcomingEvents() {
   try {
-    const res = await axios.get("http://localhost:5001/api/events");
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/events`);
     return res.data
       .filter((event: Event) => new Date(event.eventDate) > new Date())
       .slice(0, 3);
@@ -58,7 +61,7 @@ export default async function HomePage() {
 
   return (
     // The <main> tag is now the root element, as the layout provides the rest
-    <main className="container mx-auto p-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+    <main className="container mx-auto p-8 grid grid-cols-1 md:grid-cols-3 gap-12 min-h-screen">
       {/* Latest Blogs Section */}
       <section className="md:col-span-2">
         <h2 className="text-2xl font-semibold border-b-2 border-gray-300 pb-2 mb-4">

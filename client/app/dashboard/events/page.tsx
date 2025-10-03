@@ -22,7 +22,8 @@ export default function ManageEventsPage() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/api/events');
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/events`);
         setEvents(response.data);
       } catch (err) {
         setError('Failed to fetch events.');
@@ -40,7 +41,8 @@ export default function ManageEventsPage() {
 
     try {
       const token = localStorage.getItem('admin_token');
-      await axios.delete(`http://localhost:5001/api/events/${id}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}
+/api/events/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEvents(events.filter((event) => event._id !== id));

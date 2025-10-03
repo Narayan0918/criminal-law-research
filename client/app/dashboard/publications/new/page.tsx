@@ -30,7 +30,8 @@ export default function NewPublicationPage() {
       const authorsArray = authors.split(',').map(author => author.trim());
       const newPublication = { title, authors: authorsArray, abstract, publicationYear, link };
 
-      await axios.post('http://localhost:5001/api/publications', newPublication, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}
+/api/publications`, newPublication, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

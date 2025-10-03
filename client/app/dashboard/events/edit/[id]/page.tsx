@@ -22,7 +22,8 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
     const fetchEvent = async () => {
       try {
         const token = localStorage.getItem('admin_token');
-        const response = await axios.get(`http://localhost:5001/api/events/${id}`, {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/events/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const { title, eventDate, location, description } = response.data;
@@ -49,7 +50,8 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
       const token = localStorage.getItem('admin_token');
       const updatedEvent = { title, eventDate, location, description };
 
-      await axios.put(`http://localhost:5001/api/events/${id}`, updatedEvent, {
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}
+/api/events/${id}`, updatedEvent, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

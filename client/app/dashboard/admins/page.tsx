@@ -18,7 +18,8 @@ export default function ManageAdminsPage() {
   const fetchAdmins = async () => {
     try {
       const token = localStorage.getItem('admin_token');
-      const response = await axios.get('http://localhost:5001/api/admins', {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/admins`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAdmins(response.data);
@@ -36,7 +37,8 @@ export default function ManageAdminsPage() {
   const handleApprove = async (id: string) => {
     try {
       const token = localStorage.getItem('admin_token');
-      await axios.put(`http://localhost:5001/api/admins/${id}/approve`, {}, {
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}
+/api/admins/${id}/approve`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // Refresh the list to show the change
@@ -50,7 +52,8 @@ export default function ManageAdminsPage() {
     if (!window.confirm('Are you sure you want to delete this admin? This action is irreversible.')) return;
     try {
       const token = localStorage.getItem('admin_token');
-      await axios.delete(`http://localhost:5001/api/admins/${id}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}
+/api/admins/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchAdmins();

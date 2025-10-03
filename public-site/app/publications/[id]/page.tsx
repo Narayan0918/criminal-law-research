@@ -11,7 +11,8 @@ interface Publication {
 // Rewritten function using native fetch for better compatibility
 async function getPublicationById(id: string): Promise<Publication | null> {
   try {
-    const res = await fetch(`http://localhost:5001/api/publications/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}
+/api/publications/${id}`, {
       cache: 'no-store', // Ensures fresh data is fetched every time
     });
 

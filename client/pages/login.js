@@ -15,7 +15,8 @@ export default function LoginPage() {
     setError(''); // Reset error message
 
     try {
-      const response = await axios.post('http://localhost:5001/api/admins/login', {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}
+/api/admins/login`, {
         username,
         password,
       });

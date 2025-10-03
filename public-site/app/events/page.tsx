@@ -12,7 +12,8 @@ interface Event {
 
 async function getAllEvents() {
   try {
-    const res = await axios.get('http://localhost:5001/api/events');
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/events`);
     // Sort events by date, most recent first
     return res.data.sort((a: Event, b: Event) => new Date(b.eventDate).getTime() - new Date(a.eventDate).getTime());
   } catch (error) {

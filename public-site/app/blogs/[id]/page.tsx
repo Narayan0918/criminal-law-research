@@ -11,7 +11,8 @@ interface Blog {
 
 async function getBlogById(id: string) {
   try {
-    const res = await axios.get(`http://localhost:5001/api/blogs/${id}`);
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/blogs/${id}`);
     return res.data;
   } catch (error) {
     return null;

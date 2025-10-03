@@ -25,7 +25,8 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
     const fetchPost = async () => {
       try {
         const token = localStorage.getItem('admin_token');
-        const response = await axios.get(`http://localhost:5001/api/blogs/${id}`, {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/blogs/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         // Pre-fill the form with the fetched data
@@ -51,7 +52,8 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
       const updatedPost = { title, content, author };
 
       // Use a PUT request to update the existing post
-      await axios.put(`http://localhost:5001/api/blogs/${id}`, updatedPost, {
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}
+/api/blogs/${id}`, updatedPost, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

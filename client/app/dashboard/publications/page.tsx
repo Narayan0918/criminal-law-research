@@ -23,7 +23,8 @@ export default function ManagePublicationsPage() {
     const fetchPublications = async () => {
       try {
         // Use the publications API endpoint
-        const response = await axios.get('http://localhost:5001/api/publications');
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/publications`);
         setPublications(response.data);
       } catch (err) {
         setError('Failed to fetch publications.');
@@ -42,7 +43,8 @@ export default function ManagePublicationsPage() {
     try {
       const token = localStorage.getItem('admin_token');
       // Use the publications API endpoint for deleting
-      await axios.delete(`http://localhost:5001/api/publications/${id}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}
+/api/publications/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

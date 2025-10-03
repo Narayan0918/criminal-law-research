@@ -27,7 +27,8 @@ export default function NewBlogPage() {
       const token = localStorage.getItem('admin_token');
       const newPost = { title, content, author };
 
-      await axios.post('http://localhost:5001/api/blogs', newPost, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}
+/api/blogs`, newPost, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

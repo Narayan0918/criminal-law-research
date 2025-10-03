@@ -27,7 +27,8 @@ export default function NewEventPage() {
       const token = localStorage.getItem('admin_token');
       const newEvent = { title, eventDate, location, description };
 
-      await axios.post('http://localhost:5001/api/events', newEvent, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}
+/api/events`, newEvent, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

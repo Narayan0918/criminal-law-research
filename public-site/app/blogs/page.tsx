@@ -12,7 +12,8 @@ interface Blog {
 
 async function getAllBlogs() {
   try {
-    const res = await axios.get('http://localhost:5001/api/blogs');
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/blogs`);
     return res.data;
   } catch (error) {
     return [];

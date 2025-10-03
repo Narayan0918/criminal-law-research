@@ -22,7 +22,8 @@ export default function ManageBlogsPage() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://localhost:5001/api/blogs");
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/blogs`);
         setBlogs(response.data);
       } catch (err) {
         setError("Failed to fetch blog posts.");
@@ -41,7 +42,8 @@ export default function ManageBlogsPage() {
 
     try {
       const token = localStorage.getItem("admin_token");
-      await axios.delete(`http://localhost:5001/api/blogs/${id}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}
+/api/blogs/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

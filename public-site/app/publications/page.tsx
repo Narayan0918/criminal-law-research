@@ -13,7 +13,8 @@ interface Publication {
 
 async function getAllPublications() {
   try {
-    const res = await axios.get('http://localhost:5001/api/publications');
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/publications`);
     return res.data;
   } catch (error) {
     console.error("Failed to fetch publications:", error);

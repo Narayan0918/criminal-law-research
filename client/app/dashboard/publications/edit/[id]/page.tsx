@@ -23,7 +23,8 @@ export default function EditPublicationPage({ params }: { params: { id: string }
     const fetchPublication = async () => {
       try {
         const token = localStorage.getItem('admin_token');
-        const response = await axios.get(`http://localhost:5001/api/publications/${id}`, {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
+/api/publications/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const { title, authors, abstract, publicationYear, link } = response.data;
@@ -52,7 +53,8 @@ export default function EditPublicationPage({ params }: { params: { id: string }
       const authorsArray = authors.split(',').map(author => author.trim());
       const updatedPublication = { title, authors: authorsArray, abstract, publicationYear, link };
 
-      await axios.put(`http://localhost:5001/api/publications/${id}`, updatedPublication, {
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}
+/api/publications/${id}`, updatedPublication, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
