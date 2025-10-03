@@ -65,7 +65,7 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
 
   return (
     <div className="container mx-auto p-8 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6">Edit Event</h1>
+      <h1 className="text-3xl font-bold mb-6 text-black">Edit Event</h1>
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
         
         <div className="mb-4">
