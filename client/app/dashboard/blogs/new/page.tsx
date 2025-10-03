@@ -10,7 +10,6 @@ import RichTextEditor from '@/components/RichTextEditor'; // Import our new edit
 export default function NewBlogPage() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState(''); // This will now hold HTML
-  const [author, setAuthor] = useState('Admin');
   const [error, setError] = useState('');
   const router = useRouter();
 
@@ -25,7 +24,7 @@ export default function NewBlogPage() {
 
     try {
       const token = localStorage.getItem('admin_token');
-      const newPost = { title, content, author };
+      const newPost = { title, content, author: `Admin` };
 
       await axios.post(`${process.env.NEXT_PUBLIC_API_URL}
 /api/blogs`, newPost, {

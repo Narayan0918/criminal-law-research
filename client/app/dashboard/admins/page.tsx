@@ -57,9 +57,12 @@ export default function ManageAdminsPage() {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchAdmins();
-    } catch (err: any) {
-      alert(err.response?.data?.message || 'Failed to delete admin.');
-    }
+    } catch (err) { // Correctly handle the error type
+      if (axios.isAxiosError(err) && err.response) {
+        setError(err.response.data.message || 'Invalid credentials.');
+      } else {
+        setError('An unexpected error occurred.');
+      }}
   };
 
   if (loading) return <p className="p-8">Loading...</p>;
