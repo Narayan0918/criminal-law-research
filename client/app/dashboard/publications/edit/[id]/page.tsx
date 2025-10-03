@@ -1,12 +1,11 @@
-// client/app/dashboard/publications/edit/[id]/page.tsx
-
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react'; // 1. Add 'use'
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
-export default function EditPublicationPage({ params }: { params: { id: string } }) {
+// 2. Update the type of params to be a Promise
+export default function EditPublicationPage({ params }: { params: Promise<{ id: string }> }) {
   const [title, setTitle] = useState('');
   const [authors, setAuthors] = useState('');
   const [abstract, setAbstract] = useState('');
@@ -15,7 +14,9 @@ export default function EditPublicationPage({ params }: { params: { id: string }
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const router = useRouter();
-  const { id } = params;
+  
+  // 3. Use the hook to get the id
+  const { id } = use(params);
 
   useEffect(() => {
     if (!id) return;
@@ -23,18 +24,17 @@ export default function EditPublicationPage({ params }: { params: { id: string }
     const fetchPublication = async () => {
       try {
         const token = localStorage.getItem('admin_token');
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
-/api/publications/${id}`, {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/publications/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const { title, authors, abstract, publicationYear, link } = response.data;
         setTitle(title);
-        // Join the authors array back into a comma-separated string for the input field
         setAuthors(authors.join(', '));
         setAbstract(abstract);
         setPublicationYear(publicationYear);
         setLink(link);
       } catch (err) {
+        console.error(err); // Use the err variable
         setError('Failed to fetch publication data.');
       } finally {
         setLoading(false);
@@ -53,13 +53,13 @@ export default function EditPublicationPage({ params }: { params: { id: string }
       const authorsArray = authors.split(',').map(author => author.trim());
       const updatedPublication = { title, authors: authorsArray, abstract, publicationYear, link };
 
-      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}
-/api/publications/${id}`, updatedPublication, {
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/publications/${id}`, updatedPublication, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       router.push('/dashboard/publications');
     } catch (err) {
+      console.error(err); // Use the err variable
       setError('Failed to update publication.');
     }
   };
@@ -68,7 +68,7 @@ export default function EditPublicationPage({ params }: { params: { id: string }
 
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-3xl text-black font-bold mb-6">Edit Publication</h1>
+      <h1 className="text-3xl font-bold mb-6">Edit Publication</h1>
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
         
         <div className="mb-4">
@@ -78,7 +78,7 @@ export default function EditPublicationPage({ params }: { params: { id: string }
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3"
           />
         </div>
 
@@ -89,7 +89,7 @@ export default function EditPublicationPage({ params }: { params: { id: string }
             id="authors"
             value={authors}
             onChange={(e) => setAuthors(e.target.value)}
-            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         
@@ -100,7 +100,7 @@ export default function EditPublicationPage({ params }: { params: { id: string }
             id="publicationYear"
             value={publicationYear}
             onChange={(e) => setPublicationYear(parseInt(e.target.value) || '')}
-            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3"
           />
         </div>
 
@@ -111,7 +111,7 @@ export default function EditPublicationPage({ params }: { params: { id: string }
             id="link"
             value={link}
             onChange={(e) => setLink(e.target.value)}
-            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         
@@ -122,7 +122,7 @@ export default function EditPublicationPage({ params }: { params: { id: string }
             value={abstract}
             onChange={(e) => setAbstract(e.target.value)}
             rows={6}
-            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         

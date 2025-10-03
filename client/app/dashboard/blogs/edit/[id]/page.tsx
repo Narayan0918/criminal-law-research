@@ -34,6 +34,7 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
         setContent(response.data.content);
         setAuthor(response.data.author);
       } catch (err) {
+        console.error(err)
         setError('Failed to fetch post data.');
       } finally {
         setLoading(false);
@@ -59,6 +60,7 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
 
       router.push('/dashboard/blogs'); // Redirect on success
     } catch (err) {
+      console.error(err)
       setError('Failed to update post.');
     }
   };

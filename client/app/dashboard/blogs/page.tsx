@@ -26,6 +26,7 @@ export default function ManageBlogsPage() {
 /api/blogs`);
         setBlogs(response.data);
       } catch (err) {
+        console.error(err)
         setError("Failed to fetch blog posts.");
       } finally {
         setLoading(false);
@@ -51,6 +52,7 @@ export default function ManageBlogsPage() {
       // Update the UI by filtering out the deleted blog
       setBlogs(blogs.filter((blog) => blog._id !== id));
     } catch (err) {
+      console.error(err)
       setError("Failed to delete the post.");
     }
   };

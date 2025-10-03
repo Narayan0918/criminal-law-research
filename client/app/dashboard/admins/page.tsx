@@ -24,6 +24,7 @@ export default function ManageAdminsPage() {
       });
       setAdmins(response.data);
     } catch (err) {
+      console.error(err)
       setError('Failed to fetch admins. You may not have permission.');
     } finally {
       setLoading(false);
@@ -44,6 +45,7 @@ export default function ManageAdminsPage() {
       // Refresh the list to show the change
       fetchAdmins();
     } catch (err) {
+      console.error(err)
       alert('Failed to approve admin.');
     }
   };
@@ -59,8 +61,10 @@ export default function ManageAdminsPage() {
       fetchAdmins();
     } catch (err) { // Correctly handle the error type
       if (axios.isAxiosError(err) && err.response) {
+        console.error(err)
         setError(err.response.data.message || 'Invalid credentials.');
       } else {
+        console.error(err)
         setError('An unexpected error occurred.');
       }}
   };

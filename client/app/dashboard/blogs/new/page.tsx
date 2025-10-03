@@ -38,8 +38,8 @@ export default function NewBlogPage() {
 
       router.push("/dashboard/blogs");
     } catch (err) {
-      setError("Failed to create post. Please try again.");
       console.error(err);
+      setError("Failed to create post. Please try again.");
     }
   };
 

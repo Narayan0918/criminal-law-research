@@ -34,6 +34,7 @@ export default function NewEventPage() {
 
       router.push('/dashboard/events');
     } catch (err) {
+      console.error(err)
       setError('Failed to create event. Please try again.');
     }
   };

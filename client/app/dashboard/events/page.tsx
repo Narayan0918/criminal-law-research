@@ -26,6 +26,7 @@ export default function ManageEventsPage() {
 /api/events`);
         setEvents(response.data);
       } catch (err) {
+        console.error(err)
         setError('Failed to fetch events.');
       } finally {
         setLoading(false);
@@ -47,6 +48,7 @@ export default function ManageEventsPage() {
       });
       setEvents(events.filter((event) => event._id !== id));
     } catch (err) {
+      console.error(err)
       setError('Failed to delete the event.');
     }
   };
