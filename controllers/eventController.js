@@ -2,16 +2,25 @@ const asyncHandler = require('express-async-handler');
 const Event = require('../models/Event');
 
 // @desc    Get all events
-// @route   GET /api/events
-// @access  Public
 const getEvents = asyncHandler(async (req, res) => {
-  const events = await Event.find({}).sort({ eventDate: 1 }); // Sort by upcoming
+  const events = await Event.find({}).sort({ eventDate: 1 });
   res.status(200).json(events);
 });
 
+// START: Add this new function
+// @desc    Get a single event by ID
+// @access  Public
+const getEventById = asyncHandler(async (req, res) => {
+  const event = await Event.findById(req.params.id);
+  if (event) {
+    res.json(event);
+  } else {
+    res.status(404).json({ message: 'Event not found' });
+  }
+});
+// END: Add this new function
+
 // @desc    Create an event
-// @route   POST /api/events
-// @access  Private/Admin
 const createEvent = asyncHandler(async (req, res) => {
   const { title, description, eventDate, location } = req.body;
   if (!title || !description || !eventDate) {
@@ -23,8 +32,6 @@ const createEvent = asyncHandler(async (req, res) => {
 });
 
 // @desc    Update an event
-// @route   PUT /api/events/:id
-// @access  Private/Admin
 const updateEvent = asyncHandler(async (req, res) => {
     const event = await Event.findById(req.params.id);
     if(!event) {
@@ -36,8 +43,6 @@ const updateEvent = asyncHandler(async (req, res) => {
 });
 
 // @desc    Delete an event
-// @route   DELETE /api/events/:id
-// @access  Private/Admin
 const deleteEvent = asyncHandler(async (req, res) => {
     const event = await Event.findById(req.params.id);
     if(!event) {
@@ -48,4 +53,5 @@ const deleteEvent = asyncHandler(async (req, res) => {
     res.status(200).json({ id: req.params.id, message: 'Event removed' });
 });
 
-module.exports = { getEvents, createEvent, updateEvent, deleteEvent };
+// Add getEventById to the export list
+module.exports = { getEvents, getEventById, createEvent, updateEvent, deleteEvent };
