@@ -63,7 +63,7 @@ Follow these steps to get the entire project running on your local machine.
 
 ### 1. Clone the Repository
 
-```bash
+bash
 git clone <URL_to_this_repository>
 cd criminal-law-research
 
