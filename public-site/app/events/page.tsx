@@ -39,7 +39,7 @@ export default async function EventsPage() {
   };
 
   return (
-    <div className="container mx-auto px-6 py-8">
+    <div className="container mx-auto px-6 py-8 min-h-screen" >
       <h1 className="text-4xl font-bold mb-8 text-center">Events & Seminars</h1>
       
       {/* Upcoming Events Section */}

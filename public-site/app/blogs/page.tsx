@@ -30,7 +30,7 @@ export default async function BlogsPage() {
   };
 
   return (
-    <div className="container mx-auto px-6 py-8">
+    <div className="container mx-auto px-6 py-8 min-h-screen">
       <h1 className="text-4xl font-bold mb-8 text-center">Research & Analysis</h1>
       <div className="space-y-8 max-w-4xl mx-auto">
         {blogs.map((blog) => (

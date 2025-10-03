@@ -29,7 +29,7 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
   }
 
   return (
-    <article className="container mx-auto px-6 py-8 max-w-4xl">
+    <article className="container mx-auto px-6 py-8 max-w-4xl min-h-screen">
       <h1 className="text-4xl font-bold mb-2">{blog.title}</h1>
       <div className="text-gray-500 mb-6">
         <span>By {blog.author}</span> | <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
