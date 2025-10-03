@@ -14,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className={`${inter.className} font-sans bg-background2 text-primary`}>
+      <body
+        className={`${inter.className} font-sans bg-background text-primary`}
+      >
         <header className="bg-navBackground shadow-md">
           <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
             <Link href="/" className="text-xl font-bold text-primary">
@@ -24,10 +26,21 @@ export default function RootLayout({
               <span className="text-xl font-bold text-logocolor2">R</span>
             </Link>
             <div className="space-x-4">
-              <Link href="/" className="hover:text-logocolor2 font-bold">Home</Link>
-              <Link href="/blogs" className="hover:text-logocolor2 font-bold">Blog</Link>
-              <Link href="/publications" className="hover:text-logocolor2 font-bold">Publications</Link>
-              <Link href="/events" className="hover:text-logocolor2 font-bold">Events</Link>
+              <Link href="/" className="hover:text-logocolor2 font-bold">
+                Home
+              </Link>
+              <Link href="/blogs" className="hover:text-logocolor2 font-bold">
+                Blog
+              </Link>
+              <Link
+                href="/publications"
+                className="hover:text-logocolor2 font-bold"
+              >
+                Publications
+              </Link>
+              <Link href="/events" className="hover:text-logocolor2 font-bold">
+                Events
+              </Link>
             </div>
           </nav>
         </header>
@@ -47,11 +60,11 @@ export default function RootLayout({
           </p>
           {/* --- START: Added Admin Login Link --- */}
           <div className="mt-2">
-            <a 
-              href="http://localhost:3001" 
-              target="_blank" 
+            <a
+              href="http://localhost:3001"
+              target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-gray-500 hover:text-accent"
+              className="text-sm text-gray-800 hover:text-accent"
             >
               Admin Login
             </a>
