@@ -14,7 +14,6 @@ const RichTextEditor = ({ value, onChange }: RichTextEditorProps) => {
   const editor = useEditor({
     extensions: [StarterKit],
     content: value,
-    // Add this line to fix the error
     immediatelyRender: false, 
     editorProps: {
       attributes: {
