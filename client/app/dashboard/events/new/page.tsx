@@ -66,7 +66,7 @@ export default function NewEventPage() {
         </div>
         
         <div className="mb-4">
-          <label htmlFor="location" className="block text-gray-700 font-bold mb-2">Location (e.g., 'Online' or an address)</label>
+          <label htmlFor="location" className="block text-gray-700 font-bold mb-2">Location (e.g., &apos;Online&apos; or an address)</label>
           <input
             type="text"
             id="location"

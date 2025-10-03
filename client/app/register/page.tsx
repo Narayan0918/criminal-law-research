@@ -33,9 +33,12 @@ export default function RegisterPage() {
         // For subsequent admins who need approval
         setMessage(response.data.message);
       }
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Registration failed.');
-    }
+    } catch (err) { // Correctly handle the error type
+      if (axios.isAxiosError(err) && err.response) {
+        setError(err.response.data.message || 'Invalid credentials.');
+      } else {
+        setError('An unexpected error occurred.');
+      }}
   };
 
   return (

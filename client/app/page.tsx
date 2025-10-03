@@ -25,9 +25,12 @@ export default function LoginPage({ params }: { params: Promise<{ id: string }> 
         localStorage.setItem('admin_role', response.data.role); // Store the role
         router.push('/dashboard');
       }
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Invalid credentials.');
-    }
+    } catch (err) { // Correctly handle the error type
+      if (axios.isAxiosError(err) && err.response) {
+        setError(err.response.data.message || 'Invalid credentials.');
+      } else {
+        setError('An unexpected error occurred.');
+      }}
   };
 
   return (
