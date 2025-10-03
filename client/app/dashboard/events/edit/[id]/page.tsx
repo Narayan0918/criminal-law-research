@@ -1,11 +1,10 @@
-// client/app/dashboard/events/edit/[id]/page.tsx
-
 "use client";
 
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect, use } from 'react'; // 1. Add 'use'
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
+// 2. Update the type of params to be a Promise
 export default function EditEventPage({ params }: { params: Promise<{ id: string }> }) {
   const [title, setTitle] = useState('');
   const [eventDate, setEventDate] = useState('');
@@ -17,23 +16,23 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
   
   // 3. Use the hook to get the id
   const { id } = use(params);
+
   useEffect(() => {
     if (!id) return;
 
     const fetchEvent = async () => {
       try {
         const token = localStorage.getItem('admin_token');
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
-/api/events/${id}`, {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/events/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const { title, eventDate, location, description } = response.data;
         setTitle(title);
-        // Format the date to YYYY-MM-DD for the date input
         setEventDate(new Date(eventDate).toISOString().split('T')[0]);
         setLocation(location);
         setDescription(description);
       } catch (err) {
+        console.error(err); // Use the err variable
         setError('Failed to fetch event data.');
       } finally {
         setLoading(false);
@@ -51,13 +50,13 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
       const token = localStorage.getItem('admin_token');
       const updatedEvent = { title, eventDate, location, description };
 
-      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}
-/api/events/${id}`, updatedEvent, {
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/events/${id}`, updatedEvent, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       router.push('/dashboard/events');
     } catch (err) {
+      console.error(err); // Use the err variable
       setError('Failed to update event.');
     }
   };
@@ -65,8 +64,8 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
   if (loading) return <p className="text-center p-8">Loading event...</p>;
 
   return (
-    <div className="container mx-auto p-8 ">
-      <h1 className="text-3xl text-black font-bold mb-6">Edit Event</h1>
+    <div className="container mx-auto p-8">
+      <h1 className="text-3xl font-bold mb-6">Edit Event</h1>
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
         
         <div className="mb-4">
@@ -76,7 +75,7 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3"
           />
         </div>
 
@@ -87,7 +86,7 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
             id="eventDate"
             value={eventDate}
             onChange={(e) => setEventDate(e.target.value)}
-            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         
@@ -98,7 +97,7 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
             id="location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         
@@ -109,7 +108,7 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows={6}
-            className="shadow text-black appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         
