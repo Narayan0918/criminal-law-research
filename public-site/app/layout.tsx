@@ -61,7 +61,7 @@ export default function RootLayout({
           {/* --- START: Added Admin Login Link --- */}
           <div className="mt-2">
             <a
-              href="https://criminal-law-research-apkanm23n-narayan0918s-projects.vercel.app"
+              href="criminal-law-research.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-gray-800 hover:text-accent"
