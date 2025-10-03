@@ -64,7 +64,7 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
   if (loading) return <p className="text-center p-8">Loading event...</p>;
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="container mx-auto p-8 min-h-screen">
       <h1 className="text-3xl font-bold mb-6">Edit Event</h1>
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
         
@@ -75,7 +75,7 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-black"
           />
         </div>
 
@@ -86,7 +86,7 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
             id="eventDate"
             value={eventDate}
             onChange={(e) => setEventDate(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-black"
           />
         </div>
         
@@ -97,7 +97,7 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
             id="location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-black"
           />
         </div>
         
@@ -108,7 +108,7 @@ export default function EditEventPage({ params }: { params: Promise<{ id: string
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows={6}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-black"
           />
         </div>
         

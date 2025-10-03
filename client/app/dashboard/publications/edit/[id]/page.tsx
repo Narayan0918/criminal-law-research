@@ -67,8 +67,8 @@ export default function EditPublicationPage({ params }: { params: Promise<{ id: 
   if (loading) return <p className="text-center p-8">Loading publication...</p>;
 
   return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-6">Edit Publication</h1>
+    <div className="container mx-auto p-8 min-h-screen">
+      <h1 className="text-3xl font-bold mb-6 text-black">Edit Publication</h1>
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
         
         <div className="mb-4">
@@ -78,7 +78,7 @@ export default function EditPublicationPage({ params }: { params: Promise<{ id: 
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-black"
           />
         </div>
 
@@ -89,7 +89,7 @@ export default function EditPublicationPage({ params }: { params: Promise<{ id: 
             id="authors"
             value={authors}
             onChange={(e) => setAuthors(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-black"
           />
         </div>
         
@@ -100,7 +100,7 @@ export default function EditPublicationPage({ params }: { params: Promise<{ id: 
             id="publicationYear"
             value={publicationYear}
             onChange={(e) => setPublicationYear(parseInt(e.target.value) || '')}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-black"
           />
         </div>
 
@@ -111,7 +111,7 @@ export default function EditPublicationPage({ params }: { params: Promise<{ id: 
             id="link"
             value={link}
             onChange={(e) => setLink(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-black"
           />
         </div>
         
@@ -122,7 +122,7 @@ export default function EditPublicationPage({ params }: { params: Promise<{ id: 
             value={abstract}
             onChange={(e) => setAbstract(e.target.value)}
             rows={6}
-            className="shadow appearance-none border rounded w-full py-2 px-3"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-black"
           />
         </div>
         
