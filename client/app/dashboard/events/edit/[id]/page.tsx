@@ -2,11 +2,11 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
-export default function EditEventPage({ params }: { params: { id: string } }) {
+export default function EditEventPage({ params }: { params: Promise<{ id: string }> }) {
   const [title, setTitle] = useState('');
   const [eventDate, setEventDate] = useState('');
   const [location, setLocation] = useState('');
@@ -14,8 +14,9 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const router = useRouter();
-  const { id } = params;
-
+  
+  // 3. Use the hook to get the id
+  const { id } = use(params);
   useEffect(() => {
     if (!id) return;
 
