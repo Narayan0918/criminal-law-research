@@ -44,7 +44,7 @@ export default function NewBlogPage() {
   };
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="container mx-auto p-8 min-h-screen" >
       <h1 className="text-3xl text-black font-bold mb-6">
         Create New Blog Post
       </h1>
