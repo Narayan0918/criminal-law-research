@@ -1,4 +1,3 @@
-import axios from "axios";
 import Link from "next/link";
 
 // Define types for our data
@@ -21,32 +20,42 @@ interface Event {
 // Helper functions to fetch data from our API
 async function getLatestBlogs() {
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
-/api/blogs`);
-    return res.data.slice(0, 3);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs`, { cache: 'no-store' });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.slice(0, 3);
   } catch (error) {
+    console.error("Failed to fetch blogs:", error);
     return [];
   }
 }
 
 async function getLatestPublications() {
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
-/api/publications`);
-    return res.data.slice(0, 3);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/publications`, { cache: 'no-store' });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.slice(0, 3);
   } catch (error) {
+    console.error("Failed to fetch publications:", error);
     return [];
   }
 }
 
 async function getUpcomingEvents() {
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}
-/api/events`);
-    return res.data
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/events`, { cache: 'no-store' });
+    if (!res.ok) {
+        // Log the error if the response is not OK
+        console.error("API returned an error:", res.status, res.statusText);
+        return [];
+    }
+    const data = await res.json();
+    return data
       .filter((event: Event) => new Date(event.eventDate) > new Date())
       .slice(0, 3);
   } catch (error) {
+    console.error("Failed to fetch events:", error);
     return [];
   }
 }

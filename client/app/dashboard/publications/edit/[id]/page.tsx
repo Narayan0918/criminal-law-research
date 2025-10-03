@@ -4,7 +4,7 @@ import { useState, useEffect, use } from 'react'; // 1. Add 'use'
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
-// 2. Update the type of params to be a Promise
+// 2. Update the type of params
 export default function EditPublicationPage({ params }: { params: Promise<{ id: string }> }) {
   const [title, setTitle] = useState('');
   const [authors, setAuthors] = useState('');
@@ -34,7 +34,7 @@ export default function EditPublicationPage({ params }: { params: Promise<{ id: 
         setPublicationYear(publicationYear);
         setLink(link);
       } catch (err) {
-        console.error(err); // Use the err variable
+        console.error(err);
         setError('Failed to fetch publication data.');
       } finally {
         setLoading(false);
@@ -59,7 +59,7 @@ export default function EditPublicationPage({ params }: { params: Promise<{ id: 
 
       router.push('/dashboard/publications');
     } catch (err) {
-      console.error(err); // Use the err variable
+      console.error(err);
       setError('Failed to update publication.');
     }
   };
