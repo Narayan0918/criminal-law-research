@@ -41,7 +41,7 @@ export default async function BlogsPage() {
                 {blog.title}
               </Link>
             </h2>
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-700 mb-4 text-wrap">
               {createSnippet(blog.content)}
             </p>
             <Link href={`/blogs/${blog._id}`} className="font-semibold text-blue-600 hover:text-blue-800">

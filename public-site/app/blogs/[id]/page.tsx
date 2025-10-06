@@ -35,7 +35,7 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
         <span>By {blog.author}</span> | <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
       </div>
       <div
-        className="p-6 rounded-lg prose lg:prose-xl max-w-none bg-white"
+        className="p-6 rounded-lg prose lg:prose-xl max-w-none bg-white "
         dangerouslySetInnerHTML={{ __html: blog.content }}
       />
     </article>
